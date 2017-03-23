@@ -1,16 +1,19 @@
+# -*- coding: utf-8 -*-
+
 # Insper - Engenharia
 # Design de Software - 2017.1
-# EP1 - Solução
+# EP1 - SoluÄ‡Ã£oo
+import re
 
-#Ajusta as conexões em letra minúscula
+#Ajusta as conexÃµes em letra minÃºscula
 def fixConections(name):
-    sufix=[" De "," Da "," Dos "]
+    sufix=[" Do "," De "," Da "," Dos ", " E ", " Das "]
     for suf in sufix:
         name = name.replace(suf, suf.lower())
     return name
 
-#ajusta nomes: remove espaço no início e fim do nome
-# coloca todos as palavras iniciando com letra maiúscula
+#ajusta nomes: remove espaï¿½o no inÃ­cio e fim do nome
+# coloca todos as palavras iniciando com letra maiÃºscula
 def fixNames(name):
     return fixConections(re.sub("\s\s+" , " ", name).strip().title())
 
@@ -29,4 +32,5 @@ with open("nomes.txt", "r") as arquivo:
         lista_de_nomes.append(fixNames(linha))
 
 #remove nomes duplicados e exibe a lista na tela
-print(removeDuplicates(lista_de_nomes))
+for name in removeDuplicates(lista_de_nomes):
+    print(name)
